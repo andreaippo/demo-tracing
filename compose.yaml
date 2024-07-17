@@ -1,0 +1,40 @@
+services:
+  mongodb:
+    image: 'mongo:latest'
+    environment:
+      - 'MONGO_INITDB_DATABASE=admin'
+      - 'MONGO_INITDB_ROOT_PASSWORD=password'
+      - 'MONGO_INITDB_ROOT_USERNAME=andrea'
+    ports:
+      - '27017:27017'
+#  prometheus:
+#    image: prom/prometheus
+#    container_name: prometheus
+#    ports:
+#      - '9090:9090'
+#    command:
+#      - '--enable-feature=otlp-write-receiver'
+#    volumes:
+#      - ./src/main/resources/prometheus.yml:/prometheus/prometheus.yml
+#  grafana:
+#    image: grafana/grafana
+#    ports:
+#      - '3000:3000'
+  jaeger:
+    image: jaegertracing/all-in-one
+    container_name: jaeger
+    ports:
+      - '5778:5778'
+      - '16686:16686'
+      - '4317'
+      - '4318'
+  otel-collector:
+    container_name: otel-collector
+    image: otel/opentelemetry-collector
+    command: ["--config=/etc/config.yml"]
+    volumes:
+#      - ./src/main/resources/otel-collector/config.yml:/etc/config.yml
+      - ./src/main/resources/collector-config.yml:/etc/config.yml
+    ports:
+      - '4317:4317'
+      - '4318:4318'
