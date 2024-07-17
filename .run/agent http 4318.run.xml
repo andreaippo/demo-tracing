@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="agent http 4318" type="Application" factoryName="Application">
+    <envs>
+      <env name="OTEL_EXPORTER_OTLP_ENDPOINT" value="http://localhost:4318" />
+      <env name="OTEL_EXPORTER_OTLP_PROTOCOL" value="http/protobuf" />
+      <env name="OTEL_LOGS_EXPORTER" value="otlp,console" />
+      <env name="OTEL_METRICS_EXPORTER" value="otlp,console" />
+      <env name="OTEL_SERVICE_NAME" value="demo-tracing" />
+      <env name="OTEL_TRACES_EXPORTER" value="otlp,console" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="org.andrea.demo.tracing.DemoApplication" />
+    <module name="demo-tracing" />
+    <option name="VM_PARAMETERS" value="-javaagent:opentelemetry-javaagent.jar" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
