@@ -1,0 +1,29 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+exporters:
+  debug:
+    verbosity: detailed
+#    https://github.com/open-telemetry/opentelemetry-collector/blob/5753a58f712bf6f20f9daf2c660da1060cc1bebf/exporter/otlphttpexporter/README.md
+  otlphttp:
+#    port and http(s) must be coherent with OTLP protocol (http VS grpc)
+    endpoint: http://jaeger:4318
+    tls:
+      insecure: true
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters:
+        - debug
+        - otlphttp
+    metrics:
+      receivers: [otlp]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      exporters: [debug]

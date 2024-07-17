@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: demo-tracing
+  data:
+    mongodb:
+      authentication-database: admin
+      username: andrea
+      password: password
+      host: localhost
+      database: test
+logging:
+  pattern:
+    level: "traceId=%mdc{traceId} spanId=%mdc{spanId} %p"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics
+#  otlp:
+#    metrics:
+#      export:
+#        url: http://otel-collector:4317
+  tracing:
+    sampling:
+      probability: 1.0
