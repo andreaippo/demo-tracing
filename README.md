@@ -44,6 +44,10 @@ compose up -d` and wait for them to be up&running
 
 Should you use a different shell, you'll have to create your own run script by taking the commands found in `run.sh`.
 
+Send a request to the REST API via `curl localhost:8080/persons`.
+
+Open the Jaeger web UI at `localhost:16686` and you should see a new trace.
+
 ## Feedback
 
 For any feedback or appreciation, feel free to reach out via the [Issues section](https://github.com/andreaippo/demo-tracing/issues).
