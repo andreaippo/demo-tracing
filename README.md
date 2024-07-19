@@ -50,6 +50,6 @@ Open the Jaeger web UI at `localhost:16686` and you should see a new trace.
 
 ## Feedback
 
-For any feedback or appreciation, feel free to reach out via the [Issues section](https://github.com/andreaippo/demo-tracing/issues).
+For any feedback or appreciation, feel free to reach out via the [Issues section](https://github.com/andreaippo/demo-tracing/issues) or Star this repo 🙏.
 
 I'm also on [LinkedIn](https://github.com/andreaippo/demo-tracing/issues).
