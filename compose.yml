@@ -31,10 +31,27 @@ services:
   otel-collector:
     container_name: otel-collector
     image: otel/opentelemetry-collector
-    command: ["--config=/etc/config.yml"]
+    command: ["--config=/resources/collector-config.yml"]
     volumes:
-#      - ./src/main/resources/otel-collector/config.yml:/etc/config.yml
-      - ./src/main/resources/collector-config.yml:/etc/config.yml
+#    add :Z if using SELinux to avoid permission errors: https://docs.docker.com/storage/bind-mounts/#configure-the-selinux-label
+      - ./src/main/resources/:/resources/:Z
     ports:
       - '4317:4317'
       - '4318:4318'
+  kafka:
+    image: confluentinc/cp-kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+      - "9094:9094"
+    environment:
+      CLUSTER_ID: QjvaUgwGQ0qSM66eyjDSZQ
+      KAFKA_NODE_ID: 0
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_LISTENERS: PLAINTEXT://kafka:9094,CONTROLLER://kafka:29093,PLAINTEXT_HOST://0.0.0.0:9092
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 0@kafka:29093
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9094,PLAINTEXT_HOST://localhost:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT

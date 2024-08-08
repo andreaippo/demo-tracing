@@ -1,4 +1,4 @@
-package org.andrea.demo.tracing;
+package org.andrea.demo.tracing.rest;
 
 import io.micrometer.observation.annotation.Observed;
 import lombok.RequiredArgsConstructor;
