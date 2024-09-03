@@ -34,7 +34,7 @@ services:
     command: ["--config=/resources/collector-config.yml"]
     volumes:
 #    add :Z if using SELinux to avoid permission errors: https://docs.docker.com/storage/bind-mounts/#configure-the-selinux-label
-      - ./src/main/resources/:/resources/:Z
+      - ./src/main/resources/collector-config.yml:/resources/collector-config.yml:Z
     ports:
       - '4317:4317'
       - '4318:4318'

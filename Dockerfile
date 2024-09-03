@@ -3,7 +3,7 @@ FROM maven:3.9.8-eclipse-temurin-21 AS BUILD
 WORKDIR /build
 COPY pom.xml ./
 COPY src ./src
-RUN mvn clean install -Dmaven.test.skip=true
+RUN --mount=type=cache,target=/root/.m2 mvn clean install -Dmaven.test.skip=true
 
 #run
 FROM eclipse-temurin:21-jre-jammy
