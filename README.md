@@ -5,7 +5,7 @@
 The aim of this project is to demonstrate the use of tracing opentelemetry with Java and Spring Boot.
 
 The opentelemetry project is an attempt to unify a complex, vendor-specific multitude of SDKs, agents and configuration
-procedures, thereby allowing to make projects vendor-specific and independent from their specific SDKs.
+procedures, thereby allowing to make projects vendor-specific and independent of their specific SDKs.
 
 A change of vendor will therefore not have any impact on the code base, just on configuration.
 
@@ -36,13 +36,9 @@ A few clarifications:
 
 ## Quick start
 
-Assuming you have docker and docker-compose installed, you have to:
+You will need `podman` or `docker` installed, along with `compose`.
 
-- start the dependencies via compose, for example by opening a shell into the project directory and entering `docker 
-compose up -d` and wait for them to be up&running
-- start the service by executing `./run.sh` (tested on Linux).
-
-Should you use a different shell, you'll have to create your own run script by taking the commands found in `run.sh`.
+Run command `podman compose up -d --build` or `docker compose up -d --build`.
 
 Send a request to the REST API via `curl localhost:8080/persons`.
 
