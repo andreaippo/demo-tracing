@@ -38,7 +38,7 @@ A few clarifications:
 
 You will need `podman` or `docker` installed, along with `compose`.
 
-Run command `podman compose up -d --build` or `docker compose up -d --build`.
+Run command `podman compose up -d --build --force-recreate` or `docker compose up -d --build --force-recreate`.
 
 Send a request to the REST API via `curl localhost:8080/persons`.
 

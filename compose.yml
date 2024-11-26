@@ -3,6 +3,11 @@ services:
     build:
       context: .
     container_name: demo-tracing-service
+    depends_on:
+      - mongodb
+      - jaeger
+      - kafka
+      - otel-collector
     environment:
       - SPRING_PROFILES_ACTIVE=container
       - OTEL_SERVICE_NAME=demo-tracing
