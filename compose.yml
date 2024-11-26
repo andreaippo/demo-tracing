@@ -84,5 +84,5 @@ services:
     deploy:
       mode: global
 networks:
-  demo-tracing_default:
+  demo-tracing-network:
     external: true
